@@ -1,0 +1,58 @@
+pull create start
+> docker run
+
+이미지들 확인
+docker images
+
+컨테이너 확인
+docker ps -a
+
+컨테이너 스탑
+docker stop 컨테이너명
+
+컨테이너 시작
+docker start 컨테이너명
+
+컨테이너 재시작
+docker restart 컨테이너명
+
+컨테이너 삭제
+docker rm -f 컨테이너명
+
+이미지 삭제
+docker rmi 이미지명:버전
+
+FROM, COPY, RUN, CMD, ENTRYPOINT
+
+
+
+
+**볼륨 속성들을 확인**
+
+> `docker volume
+docker volume ls`
+> 
+
+**볼륨생성**
+
+> `docker volume create <볼륨명>
+docker volume create webserver-upload`
+> 
+
+**볼륨확인**
+
+> `docker inspect <볼륨명>
+docker inspect webserver-upload`
+> 
+
+**볼륨삭제(도커 볼륨을 사용하고 있는 컨테이너를 삭제해도 볼륨이 자동으로 삭제되지는 않습니다.)**
+
+> `docker volume rm <볼륨명>
+docker volume rm webserver-upload`
+> 
+
+**사용하지 않는 볼륨 정리**
+
+> `docker volume prune`
+>
+

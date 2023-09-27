@@ -1,0 +1,21 @@
+# 베이스이미지
+FROM openjdk
+
+#한번 실행되는 명령문
+RUN mkdir /home/app
+
+#작업 디렉토리지정
+WORKDIR /home/app
+
+#의미 없이 파일 하나 생성
+RUN touch project.txt
+
+#사용자 os파일을 컨테이너 안으로 복사
+COPY project/BootMyweb-0.0.1.war ./app.war
+
+#엔트리포인트는 마지막에 실행되는 고정명령(고정)
+ENTRYPOINT ["java", "-jar"]
+
+#docker run시에 매개값으로 변경이 가능한 명령문(가변)
+CMD ["app.war"]
+

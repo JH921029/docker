@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  server1: # 이미지 명칭
+    build: # 도커파일의 위치
+      C:\Users\user\Desktop\BootMyweb
+    ports: # 컨테이너의 포트포워딩
+      - "8282:8282"
+    volumes: # 볼륨설정 (호스트폴더:컨테이너 폴더)
+      - test-volume:/upload
+    networks: #네트워크 설정
+      - test-network
+    depends_on: # webserver-mysql이 먼저 실행되고 그 다음에 sever1이 실행됩니다.
+      - webserver-mysql
+
+  webserver-mysql:
+    image: "mysql" # 이미지명
+    ports:
+      - "3308:3306" # 기존서비스가 3307, 3306이 존재하기 때문에..
+    networks:
+      - test-network
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+
+volumes: # 볼륨생성
+  test-volume: {}
+networks: # 사용자정의 네트워크
+  test-network: {}
